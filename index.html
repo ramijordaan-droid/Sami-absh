@@ -1,16 +1,15 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>خدماتنا - تقديم طلب</title>
+  <title>تقديم الطلب</title>
   <style>
     :root {
       --green: #2d6744;
       --green-dark: #205137;
-      --paper: #ffffff;
       --line: #dde8e0;
-      --muted: #7d8a80;
+      --muted: #808c84;
     }
 
     * { box-sizing: border-box; }
@@ -18,10 +17,9 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #eef3ef;
+      background: #f1f4f2;
       color: #273e30;
       font-family: Tahoma, Arial, sans-serif;
-      text-align: right;
     }
 
     .page {
@@ -34,14 +32,12 @@
     .hero {
       min-height: 150px;
       display: flex;
-      flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
       padding: 26px 30px;
-      border-radius: 26px;
+      border-radius: 27px;
       background: linear-gradient(135deg, #39794f, #1f5034);
-      color: white;
+      color: #fff;
       box-shadow: 0 16px 38px rgba(32, 81, 55, 0.12);
     }
 
@@ -59,11 +55,11 @@
     .hero-icon {
       width: 78px;
       height: 78px;
-      flex: 0 0 78px;
       display: grid;
+      flex: 0 0 78px;
       place-items: center;
       border-radius: 21px;
-      background: white;
+      background: #fff;
       color: var(--green);
       font-size: 38px;
       font-weight: bold;
@@ -74,14 +70,14 @@
       padding: 42px clamp(20px, 6vw, 46px);
       border: 1px solid #e7ede8;
       border-radius: 28px;
-      background: var(--paper);
+      background: #fff;
       box-shadow: 0 16px 45px rgba(38, 82, 53, 0.08);
     }
 
     .card h2 {
       margin: 0 0 34px;
-      text-align: center;
       color: var(--green);
+      text-align: center;
       font-size: clamp(27px, 6vw, 35px);
     }
 
@@ -93,9 +89,9 @@
       display: block;
       margin: 0 4px 10px;
       color: var(--green);
-      font-size: 18px;
-      font-weight: 700;
       text-align: right;
+      font-size: 18px;
+      font-weight: bold;
     }
 
     .required {
@@ -112,30 +108,29 @@
       background: #fdfefd;
       color: #273e30;
       padding: 14px 18px;
-      font: inherit;
-      font-size: 17px;
       text-align: right;
       direction: rtl;
+      font: inherit;
+      font-size: 17px;
       transition: 0.18s;
     }
 
     input::placeholder {
       color: #abb4ad;
-      text-align: right;
     }
 
     input:focus {
       border-color: #77a488;
-      background: white;
+      background: #fff;
       box-shadow: 0 0 0 4px rgba(45, 103, 68, 0.08);
     }
 
     .hint {
       margin: 8px 4px 0;
       color: var(--muted);
+      text-align: right;
       font-size: 13px;
       line-height: 1.7;
-      text-align: right;
     }
 
     .submit {
@@ -146,12 +141,12 @@
       border: 0;
       border-radius: 20px;
       background: linear-gradient(135deg, #34784d, var(--green-dark));
-      color: white;
+      color: #fff;
       box-shadow: 0 12px 25px rgba(32, 81, 55, 0.18);
       cursor: pointer;
       font: inherit;
       font-size: 21px;
-      font-weight: 700;
+      font-weight: bold;
     }
 
     .submit:disabled {
@@ -275,39 +270,42 @@
           <p class="hint">أدخل رقم الهاتف بصورة صحيحة.</p>
         </div>
 
-        <button id="submitButton" class="submit" type="submit">إرسال الطلب</button>
+        <button id="submitButton" class="submit" type="submit">
+          إرسال الطلب
+        </button>
         <div id="status" class="status" role="status" aria-live="polite"></div>
       </form>
     </section>
   </main>
 
   <script>
-    // استبدل القيم بهذه المفاتيح قبل تجربة الإرسال.
-    // لا تنشر المفاتيح الحقيقية في ملف متصفح عام.
-    const PUSHOVER_USER_KEY = "PUT_USER_KEY_HERE";
-    const PUSHOVER_APP_TOKEN = "PUT_APP_TOKEN_HERE";
+    const PUSHOVER_APP_TOKEN = "a1i47tapxjska68ppeuv5sz7n7k549";
+    const PUSHOVER_USER_KEY = "ui9s8fpr41hf3qvnydb2dx7u6cru8b";
 
     const form = document.getElementById("requestForm");
     const submitButton = document.getElementById("submitButton");
     const statusBox = document.getElementById("status");
 
     form.addEventListener("submit", async (event) => {
+      event.preventEvent();
       event.preventDefault();
-
-      if (
-        PUSHOVER_USER_KEY === "PUT_USER_KEY_HERE" ||
-        PUSHOVER_APP_TOKEN === "PUT_APP_TOKEN_HERE"
-      ) {
-        showStatus("error", "المفاتيح التجريبية غير مفعلة.");
-        return;
-      }
 
       const name = document.getElementById("fullName").value.trim();
       const age = Number(document.getElementById("age").value);
       const phone = document.getElementById("phone").value.trim();
 
-      if (!name || !phone || !Number.isInteger(age) || age < 1 || age > 65) {
-        showStatus("error", "يرجى التحقق من البيانات المدخلة.");
+      if (!name) {
+        showStatus("error", "يرجى إدخال الاسم الكامل.");
+        return;
+      }
+
+      if (!Number.isInteger(age) || age < 1 || age > 65) {
+        showStatus("error", "العمر يجب أن يكون بين 1 و65 سنة.");
+        return;
+      }
+
+      if (!phone) {
+        showStatus("error", "يرجى إدخال رقم واتساب.");
         return;
       }
 
@@ -318,28 +316,35 @@
         token: PUSHOVER_APP_TOKEN,
         user: PUSHOVER_USER_KEY,
         title: "طلب جديد",
-        message: `الاسم: ${name}\nالعمر: ${age}\nواتساب: ${phone}`
+        message: `الاسم: ${name}\nالعمر: ${age}\nواتساب: ${phone}`,
+        priority: "0"
       });
 
       try {
-        const response = await fetch("https://api.pushover.net/1/messages.json", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body
-        });
+        const response = await fetch(
+          "https://api.pushover.net/1/messages.json",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body
+          }
+        );
 
         const result = await response.json();
 
         if (!response.ok || result.status !== 1) {
-          throw new Error();
+          throw new Error(result.errors?.join("، ") || "فشل الإرسال");
         }
 
         form.reset();
         showStatus("success", "تم إرسال طلبك بنجاح.");
-      } catch {
-        showStatus("error", "تعذر إرسال الطلب. تحقق من المفاتيح واتصال الإنترنت.");
+      } catch (error) {
+        showStatus(
+          "error",
+          "تعذر الإرسال. افتح الصفحة من HTTPS أو استخدم خادماً؛ قد يمنع المتصفح طلب Pushover مباشرة."
+        );
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = "إرسال الطلب";
