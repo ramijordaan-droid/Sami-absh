@@ -3,28 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2d6744">
-
-  <title>خدمات كي المصرفية - تقديم طلب</title>
-  <meta name="description" content="قدم طلبك للاستفادة من خدمات كي المصرفية.">
-  <meta property="og:title" content="خدمات كي المصرفية">
-  <meta property="og:description" content="قدم طلبك للاستفادة من خدمات كي المصرفية.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://up6.cc/2026/11/179502877464551.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="ar_IQ">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://up6.cc/2026/11/179502877464551.png">
+  <title>تقديم الطلب</title>
 
   <style>
     :root {
       --green: #2d6744;
       --green-dark: #205137;
-      --green-bright: #22c55e;
-      --line: #dce7df;
+      --line: #dfe7e1;
       --muted: #87928b;
-      --red: #bd5555;
     }
 
     * { box-sizing: border-box; }
@@ -33,9 +19,7 @@
       margin: 0;
       min-height: 100vh;
       direction: rtl;
-      background:
-        radial-gradient(circle at top, rgba(77, 138, 96, .08), transparent 250px),
-        #f1f5f2;
+      background: #f1f5f2;
       color: #293d30;
       font-family: Tahoma, Arial, sans-serif;
     }
@@ -57,7 +41,7 @@
       padding: 24px;
       border: 1px solid rgba(45, 103, 68, .07);
       border-radius: 28px;
-      background: rgba(255, 255, 255, .96);
+      background: #fff;
       box-shadow: 0 16px 44px rgba(38, 82, 53, .07);
     }
 
@@ -65,37 +49,25 @@
       width: 132px;
       height: 132px;
       object-fit: contain;
-      border-radius: 24px;
     }
 
     .hero h1 {
       margin: 0;
       color: var(--green);
-      font-size: clamp(26px, 6vw, 38px);
       text-align: center;
+      font-size: clamp(26px, 6vw, 38px);
     }
 
-    .hero-action {
-      width: min(100%, 430px);
-      min-height: 66px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      background: var(--green);
-      color: #fff;
-      font-size: 21px;
-      font-weight: 700;
-    }
-
-    .card {
+    .card,
+    .bank-info {
       margin-top: 20px;
-      padding: clamp(24px, 6vw, 48px);
-      direction: rtl;
-      border: 1px solid rgba(232, 238, 233, .95);
       border-radius: 28px;
       background: #fff;
       box-shadow: 0 16px 48px rgba(34, 75, 48, .09);
-      text-align: right;
+    }
+
+    .card {
+      padding: clamp(24px, 6vw, 48px);
     }
 
     .card h2 {
@@ -107,21 +79,19 @@
 
     .field {
       margin-bottom: 24px;
-      direction: rtl;
       text-align: right;
     }
 
     label {
       display: block;
       margin: 0 4px 10px;
-      direction: rtl;
       color: var(--green);
       text-align: right;
       font-size: clamp(17px, 4.4vw, 22px);
       font-weight: 700;
     }
 
-    .required { color: var(--red); }
+    .required { color: #bd5555; }
 
     input,
     select {
@@ -138,19 +108,15 @@
       text-align: right;
       font: inherit;
       font-size: 18px;
-      transition: border-color .18s, box-shadow .18s, background .18s;
     }
 
     input::placeholder {
-      direction: rtl;
       color: #abb5ae;
-      text-align: right;
     }
 
     input:focus,
     select:focus {
       border-color: #77a287;
-      background: #fff;
       box-shadow: 0 0 0 4px rgba(45, 103, 68, .08);
     }
 
@@ -163,37 +129,33 @@
       padding-left: 50px;
     }
 
-    select option {
-      direction: rtl;
-      text-align: right;
-    }
-
     .hint {
       margin: 8px 5px 0;
-      direction: rtl;
       color: var(--muted);
-      text-align: right;
       font-size: 14px;
-      line-height: 1.7;
     }
 
     [hidden] { display: none !important; }
 
-    .submit-button {
+    button {
+      font-family: inherit;
+    }
+
+    .submit-button,
+    .back-button {
       width: 100%;
-      min-height: 76px;
-      display: block;
-      margin-top: 34px;
+      min-height: 70px;
       border: 0;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #39794f, var(--green-dark));
-      color: #fff;
-      box-shadow: 0 14px 28px rgba(32, 81, 55, .17);
+      border-radius: 20px;
       cursor: pointer;
-      font: inherit;
-      font-size: clamp(21px, 5vw, 27px);
+      font-size: 20px;
       font-weight: 700;
-      text-align: center;
+    }
+
+    .submit-button {
+      margin-top: 34px;
+      background: linear-gradient(135deg, #39794f, #205137);
+      color: #fff;
     }
 
     .submit-button:disabled {
@@ -206,9 +168,7 @@
       margin-top: 16px;
       padding: 14px;
       border-radius: 16px;
-      line-height: 1.8;
       text-align: center;
-      overflow-wrap: anywhere;
     }
 
     .status.success {
@@ -224,13 +184,10 @@
     }
 
     .bank-info {
-      margin-top: 22px;
       padding: clamp(24px, 6vw, 42px);
-      border-radius: 26px;
-      background: linear-gradient(135deg, #34784d, var(--green-dark));
+      background: linear-gradient(135deg, #34784d, #205137);
       color: #fff;
       text-align: center;
-      box-shadow: 0 14px 35px rgba(32, 81, 55, .12);
     }
 
     .bank-info h2 {
@@ -241,20 +198,17 @@
     .bank-info p {
       margin: 0;
       line-height: 1.9;
-      font-size: clamp(15px, 4vw, 19px);
     }
 
     .success-view {
-      min-height: 620px;
+      min-height: 520px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 24px;
+      gap: 22px;
       text-align: center;
     }
-
-    .success-view[hidden] { display: none; }
 
     .success-mark {
       width: 142px;
@@ -265,7 +219,6 @@
       border-radius: 50%;
       background: #fff;
       color: var(--green);
-      box-shadow: 0 16px 38px rgba(45, 103, 68, .10);
     }
 
     .success-mark svg {
@@ -277,81 +230,34 @@
       margin: 0;
       color: var(--green);
       font-size: clamp(28px, 7vw, 40px);
-      line-height: 1.5;
     }
 
     .success-view p {
       max-width: 470px;
       margin: 0;
       color: var(--muted);
-      font-size: clamp(16px, 4vw, 19px);
       line-height: 1.9;
     }
 
-    .action {
-      width: 100%;
+    .back-button {
       max-width: 500px;
-      min-height: 68px;
-      display: grid;
-      place-items: center;
-      border: 0;
-      border-radius: 20px;
-      text-decoration: none;
-      font: inherit;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .whatsapp-action {
-      background: var(--green-bright);
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(34, 197, 94, .18);
-    }
-
-    .back-action {
-      min-height: 58px;
       border: 3px solid var(--green);
       background: #fff;
       color: var(--green);
-    }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      direction: ltr;
-    }
-
-    .social {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border: 1px solid #e7ede8;
-      border-radius: 50%;
-      background: #fff;
-      color: var(--green);
-      box-shadow: 0 8px 20px rgba(34, 75, 48, .08);
-      text-decoration: none;
-      font-weight: 700;
-      pointer-events: none;
     }
 
     @media (max-width: 480px) {
       .page { padding: 10px 8px 28px; }
       .hero { min-height: 190px; border-radius: 24px; }
       .hero-logo { width: 118px; height: 118px; }
-      .card { margin-top: 14px; border-radius: 24px; }
+      .card { border-radius: 24px; }
       input, select {
         min-height: 64px;
         border-radius: 21px;
         font-size: 17px;
       }
-      .submit-button {
-        min-height: 70px;
-        border-radius: 22px;
-      }
-      .success-view { min-height: 560px; }
+      .submit-button, .back-button { min-height: 70px; }
+      .success-view { min-height: 480px; }
     }
   </style>
 </head>
@@ -453,27 +359,12 @@
           </svg>
         </div>
 
-        <h2>تم قبول الطلب بنجاح</h2>
+        <h2>تم تقديم الطلب بنجاح</h2>
+        <p>تم استلام الطلب وسيتم مراجعة البيانات والمتابعة حسب الحاجة.</p>
 
-        <p>
-          سيتم التواصل معك خلال واتساب لتفعيل بطاقات السلفة وحصولك على السلفة.
-        </p>
-
-        <a class="action whatsapp-action" id="whatsappAction"
-          href="https://wa.me/" target="_blank" rel="noopener">
-          تواصل عبر واتساب
-        </a>
-
-        <button class="action back-action" id="backAction" type="button">
-          العودة إلى القائمة الرئيسية
+        <button class="back-button" id="backAction" type="button">
+          العودة إلى الصفحة الرئيسية
         </button>
-
-        <div class="socials" aria-label="وسائل التواصل الاجتماعي">
-          <a class="social" href="#" aria-label="فيسبوك" tabindex="-1">f</a>
-          <a class="social" href="#" aria-label="يوتيوب" tabindex="-1">▶</a>
-          <a class="social" href="#" aria-label="تويتر" tabindex="-1">t</a>
-          <a class="social" href="#" aria-label="تيليجرام" tabindex="-1">✈</a>
-        </div>
       </div>
     </section>
 
@@ -481,7 +372,7 @@
       <h2>عن المصرف</h2>
       <p>
         مصرف الرافدين مصرف عراقي حكومي، تأسس في بغداد عام 1941،
-        وهو من المصارف العراقية الكبرى. لمزيد من التفاصيل تواصل معنا.
+        وهو من المصارف العراقية الكبرى.
       </p>
     </section>
   </main>
@@ -499,14 +390,11 @@
     const formView = document.getElementById("formView");
     const successView = document.getElementById("successView");
     const backAction = document.getElementById("backAction");
-    const whatsappAction = document.getElementById("whatsappAction");
 
     employmentStatus.addEventListener("change", () => {
       const isEmployee = employmentStatus.value === "موظف";
-
       jobField.hidden = !isEmployee;
       jobTitle.required = isEmployee;
-
       if (!isEmployee) jobTitle.value = "";
     });
 
@@ -579,11 +467,6 @@
               : "تحقق من مفاتيح Pushover."
           );
         }
-
-        const digits = phone.replace(/[^\d]/g, "");
-        whatsappAction.href = digits
-          ? `https://wa.me/${digits}`
-          : "https://wa.me/";
 
         formView.hidden = true;
         successView.hidden = false;
