@@ -4,14 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#2d6744">
-  <title>تقديم الطلب</title>
+
+  <title>خدمات كي المصرفية - تقديم طلب</title>
+  <meta name="description" content="قدم طلبك للاستفادة من خدمات كي المصرفية.">
+  <meta property="og:title" content="خدمات كي المصرفية">
+  <meta property="og:description" content="قدم طلبك للاستفادة من خدمات كي المصرفية.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://up6.cc/2026/11/179502877464551.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ar_IQ">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://up6.cc/2026/11/179502877464551.png">
 
   <style>
     :root {
       --green: #2d6744;
       --green-dark: #205137;
-      --line: #dfe9e1;
-      --muted: #808c84;
+      --green-bright: #22c55e;
+      --line: #dce7df;
+      --muted: #87928b;
+      --red: #bd5555;
     }
 
     * { box-sizing: border-box; }
@@ -19,107 +32,180 @@
     body {
       margin: 0;
       min-height: 100vh;
-      padding: 18px 12px 40px;
-      background: #eef3ef;
+      direction: rtl;
+      background:
+        radial-gradient(circle at top, rgba(77, 138, 96, .08), transparent 250px),
+        #f1f5f2;
       color: #293d30;
       font-family: Tahoma, Arial, sans-serif;
-      text-align: right;
     }
 
-    .container {
+    .page {
       width: 100%;
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
+      padding: 22px 12px 44px;
+    }
+
+    .hero {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 24px;
+      border: 1px solid rgba(45, 103, 68, .07);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, .96);
+      box-shadow: 0 16px 44px rgba(38, 82, 53, .07);
+    }
+
+    .hero-logo {
+      width: 132px;
+      height: 132px;
+      object-fit: contain;
+      border-radius: 24px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: var(--green);
+      font-size: clamp(26px, 6vw, 38px);
+      text-align: center;
+    }
+
+    .hero-action {
+      width: min(100%, 430px);
+      min-height: 66px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: var(--green);
+      color: #fff;
+      font-size: 21px;
+      font-weight: 700;
     }
 
     .card {
+      margin-top: 20px;
       padding: clamp(24px, 6vw, 48px);
-      border-radius: 30px;
+      direction: rtl;
+      border: 1px solid rgba(232, 238, 233, .95);
+      border-radius: 28px;
       background: #fff;
       box-shadow: 0 16px 48px rgba(34, 75, 48, .09);
+      text-align: right;
     }
 
-    h1 {
-      margin: 0 0 38px;
+    .card h2 {
+      margin: 0 0 34px;
       color: var(--green);
       text-align: center;
-      font-size: clamp(30px, 7vw, 46px);
+      font-size: clamp(28px, 7vw, 42px);
     }
 
-    .field { margin-bottom: 28px; }
+    .field {
+      margin-bottom: 24px;
+      direction: rtl;
+      text-align: right;
+    }
 
     label {
       display: block;
-      margin: 0 4px 12px;
+      margin: 0 4px 10px;
+      direction: rtl;
       color: var(--green);
-      font-size: clamp(18px, 4.5vw, 24px);
-      font-weight: 700;
       text-align: right;
+      font-size: clamp(17px, 4.4vw, 22px);
+      font-weight: 700;
     }
 
-    .required { color: #b34a4a; }
+    .required { color: var(--red); }
 
-    input {
-      display: block;
+    input,
+    select {
       width: 100%;
-      min-height: 72px;
-      padding: 16px 20px;
-      border: 3px solid var(--line);
-      border-radius: 24px;
+      min-height: 68px;
+      display: block;
+      padding: 15px 18px;
+      direction: rtl;
+      border: 2px solid var(--line);
+      border-radius: 20px;
       outline: none;
       background: #fcfdfc;
       color: #293d30;
-      font: inherit;
-      font-size: 20px;
       text-align: right;
-      direction: rtl;
+      font: inherit;
+      font-size: 18px;
+      transition: border-color .18s, box-shadow .18s, background .18s;
     }
 
     input::placeholder {
-      color: #a7afa9;
+      direction: rtl;
+      color: #abb5ae;
       text-align: right;
     }
 
-    input:focus {
-      border-color: #80a78b;
+    input:focus,
+    select:focus {
+      border-color: #77a287;
+      background: #fff;
       box-shadow: 0 0 0 4px rgba(45, 103, 68, .08);
     }
 
-    .hint {
-      margin: 10px 5px 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
+    select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%232d6744' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 18px center;
+      padding-left: 50px;
+    }
+
+    select option {
+      direction: rtl;
       text-align: right;
     }
 
-    button {
-      display: block;
+    .hint {
+      margin: 8px 5px 0;
+      direction: rtl;
+      color: var(--muted);
+      text-align: right;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    [hidden] { display: none !important; }
+
+    .submit-button {
       width: 100%;
-      min-height: 86px;
-      margin-top: 40px;
+      min-height: 76px;
+      display: block;
+      margin-top: 34px;
       border: 0;
-      border-radius: 28px;
+      border-radius: 22px;
       background: linear-gradient(135deg, #39794f, var(--green-dark));
-      color: white;
+      color: #fff;
       box-shadow: 0 14px 28px rgba(32, 81, 55, .17);
       cursor: pointer;
       font: inherit;
-      font-size: clamp(22px, 5vw, 30px);
+      font-size: clamp(21px, 5vw, 27px);
       font-weight: 700;
+      text-align: center;
     }
 
-    button:disabled {
+    .submit-button:disabled {
       cursor: wait;
       opacity: .65;
     }
 
     .status {
       display: none;
-      margin-top: 22px;
-      padding: 20px 16px;
-      border-radius: 22px;
-      font-size: 18px;
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 16px;
       line-height: 1.8;
       text-align: center;
       overflow-wrap: anywhere;
@@ -137,140 +223,395 @@
       color: #973535;
     }
 
+    .bank-info {
+      margin-top: 22px;
+      padding: clamp(24px, 6vw, 42px);
+      border-radius: 26px;
+      background: linear-gradient(135deg, #34784d, var(--green-dark));
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 14px 35px rgba(32, 81, 55, .12);
+    }
+
+    .bank-info h2 {
+      margin: 0 0 14px;
+      font-size: clamp(24px, 6vw, 34px);
+    }
+
+    .bank-info p {
+      margin: 0;
+      line-height: 1.9;
+      font-size: clamp(15px, 4vw, 19px);
+    }
+
+    .success-view {
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .success-view[hidden] { display: none; }
+
+    .success-mark {
+      width: 142px;
+      height: 142px;
+      display: grid;
+      place-items: center;
+      border: 10px solid #edf7f0;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--green);
+      box-shadow: 0 16px 38px rgba(45, 103, 68, .10);
+    }
+
+    .success-mark svg {
+      width: 76px;
+      height: 76px;
+    }
+
+    .success-view h2 {
+      margin: 0;
+      color: var(--green);
+      font-size: clamp(28px, 7vw, 40px);
+      line-height: 1.5;
+    }
+
+    .success-view p {
+      max-width: 470px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(16px, 4vw, 19px);
+      line-height: 1.9;
+    }
+
+    .action {
+      width: 100%;
+      max-width: 500px;
+      min-height: 68px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 20px;
+      text-decoration: none;
+      font: inherit;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .whatsapp-action {
+      background: var(--green-bright);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(34, 197, 94, .18);
+    }
+
+    .back-action {
+      min-height: 58px;
+      border: 3px solid var(--green);
+      background: #fff;
+      color: var(--green);
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      direction: ltr;
+    }
+
+    .social {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #e7ede8;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--green);
+      box-shadow: 0 8px 20px rgba(34, 75, 48, .08);
+      text-decoration: none;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
     @media (max-width: 480px) {
-      body { padding: 10px 8px 28px; }
-      .card { border-radius: 24px; }
-      input { min-height: 64px; border-radius: 21px; font-size: 18px; }
-      button { min-height: 72px; border-radius: 23px; }
+      .page { padding: 10px 8px 28px; }
+      .hero { min-height: 190px; border-radius: 24px; }
+      .hero-logo { width: 118px; height: 118px; }
+      .card { margin-top: 14px; border-radius: 24px; }
+      input, select {
+        min-height: 64px;
+        border-radius: 21px;
+        font-size: 17px;
+      }
+      .submit-button {
+        min-height: 70px;
+        border-radius: 22px;
+      }
+      .success-view { min-height: 560px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
-    <section class="card">
-      <h1>تقديم الطلب</h1>
+  <main class="page">
+    <header class="hero">
+      <img
+        class="hero-logo"
+        src="https://up6.cc/2026/11/179502877464551.png"
+        alt="شعار خدمات كي المصرفية"
+      >
+      <h1>خدمات كي المصرفية</h1>
+    </header>
 
-      <form id="requestForm">
-        <div class="field">
-          <label for="fullName">الاسم الكامل <span class="required">*</span></label>
-          <input
-            id="fullName"
-            name="fullName"
-            type="text"
-            maxlength="100"
-            autocomplete="name"
-            placeholder="اسم مقدم الطلب"
-            required
-          >
+    <section class="card" id="formCard">
+      <div id="formView">
+        <h2>تقديم الطلب</h2>
+
+        <form id="requestForm">
+          <div class="field">
+            <label for="fullName">الاسم الكامل <span class="required">*</span></label>
+            <input id="fullName" name="fullName" type="text" maxlength="100"
+              autocomplete="name" placeholder="اسم مقدم الطلب" required>
+          </div>
+
+          <div class="field">
+            <label for="age">العمر <span class="required">*</span></label>
+            <input id="age" name="age" type="number" min="1" max="65"
+              inputmode="numeric" placeholder="مثال: 35" required>
+            <p class="hint">الحد الأعلى للعمر 65 سنة.</p>
+          </div>
+
+          <div class="field">
+            <label for="phone">رقم الهاتف المسجل في واتساب <span class="required">*</span></label>
+            <input id="phone" name="phone" type="tel" maxlength="25"
+              autocomplete="tel" inputmode="tel" placeholder="أدخل رقم الهاتف" required>
+          </div>
+
+          <div class="field">
+            <label for="loanAmount">مبلغ السلفة <span class="required">*</span></label>
+            <select id="loanAmount" name="loanAmount" required>
+              <option value="" selected disabled>اختر مبلغ السلفة</option>
+              <option value="5 مليون">5 مليون</option>
+              <option value="10 مليون">10 مليون</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="monthlySalary">الراتب الشهري <span class="required">*</span></label>
+            <select id="monthlySalary" name="monthlySalary" required>
+              <option value="" selected disabled>اختر الراتب الشهري</option>
+              <option value="من 100 ألف إلى 300 ألف">من 100 ألف إلى 300 ألف</option>
+              <option value="من 300 ألف إلى 500 ألف">من 300 ألف إلى 500 ألف</option>
+              <option value="من 500 ألف إلى 700 ألف">من 500 ألف إلى 700 ألف</option>
+              <option value="من 700 ألف إلى مليون">من 700 ألف إلى مليون</option>
+              <option value="أكثر من مليون">أكثر من مليون</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="bankApp">هل لديك تطبيق خدمات كي؟ <span class="required">*</span></label>
+            <select id="bankApp" name="bankApp" required>
+              <option value="" selected disabled>اختر الإجابة</option>
+              <option value="نعم">نعم</option>
+              <option value="لا">لا</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="employmentStatus">حالة العمل <span class="required">*</span></label>
+            <select id="employmentStatus" name="employmentStatus" required>
+              <option value="" selected disabled>اختر حالة العمل</option>
+              <option value="موظف">موظف</option>
+              <option value="متقاعد">متقاعد</option>
+              <option value="عاطل عن العمل">عاطل عن العمل</option>
+            </select>
+          </div>
+
+          <div class="field" id="jobField" hidden>
+            <label for="jobTitle">الوظيفة <span class="required">*</span></label>
+            <input id="jobTitle" name="jobTitle" type="text"
+              maxlength="100" placeholder="اكتب اسم الوظيفة">
+          </div>
+
+          <button class="submit-button" id="submitButton" type="submit">
+            إرسال الطلب
+          </button>
+
+          <div id="status" class="status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <div class="success-view" id="successView" hidden>
+        <div class="success-mark" aria-label="تم بنجاح">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M14 34L26 47L50 18" stroke="currentColor"
+              stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
 
-        <div class="field">
-          <label for="age">العمر <span class="required">*</span></label>
-          <input
-            id="age"
-            name="age"
-            type="number"
-            min="1"
-            max="65"
-            inputmode="numeric"
-            placeholder="مثال: 30"
-            required
-          >
-          <p class="hint">الحد الأعلى للعمر 65 سنة.</p>
-        </div>
+        <h2>تم قبول الطلب بنجاح</h2>
 
-        <div class="field">
-          <label for="phone">رقم الهاتف المسجل في واتساب <span class="required">*</span></label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            maxlength="25"
-            autocomplete="tel"
-            inputmode="tel"
-            placeholder="أدخل رقم الهاتف"
-            required
-          >
-          <p class="hint">أدخل رقم الهاتف بصورة صحيحة.</p>
-        </div>
+        <p>
+          سيتم التواصل معك خلال واتساب لتفعيل بطاقات السلفة وحصولك على السلفة.
+        </p>
 
-        <button id="submitButton" type="submit">إرسال الطلب</button>
-        <div id="status" class="status" role="status" aria-live="polite"></div>
-      </form>
+        <a class="action whatsapp-action" id="whatsappAction"
+          href="https://wa.me/" target="_blank" rel="noopener">
+          تواصل عبر واتساب
+        </a>
+
+        <button class="action back-action" id="backAction" type="button">
+          العودة إلى القائمة الرئيسية
+        </button>
+
+        <div class="socials" aria-label="وسائل التواصل الاجتماعي">
+          <a class="social" href="#" aria-label="فيسبوك" tabindex="-1">f</a>
+          <a class="social" href="#" aria-label="يوتيوب" tabindex="-1">▶</a>
+          <a class="social" href="#" aria-label="تويتر" tabindex="-1">t</a>
+          <a class="social" href="#" aria-label="تيليجرام" tabindex="-1">✈</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bank-info">
+      <h2>عن المصرف</h2>
+      <p>
+        مصرف الرافدين مصرف عراقي حكومي، تأسس في بغداد عام 1941،
+        وهو من المصارف العراقية الكبرى. لمزيد من التفاصيل تواصل معنا.
+      </p>
     </section>
   </main>
 
   <script>
-    // مفاتيح التجربة التي أرسلتها
     const PUSHOVER_APP_TOKEN = "a1i47tapxjska68ppeuv5sz7n7k549";
     const PUSHOVER_USER_KEY = "ui9s8fpr41hf3qvnydb2dx7u6cru8b";
 
     const form = document.getElementById("requestForm");
-    const button = document.getElementById("submitButton");
+    const submitButton = document.getElementById("submitButton");
     const statusBox = document.getElementById("status");
+    const employmentStatus = document.getElementById("employmentStatus");
+    const jobField = document.getElementById("jobField");
+    const jobTitle = document.getElementById("jobTitle");
+    const formView = document.getElementById("formView");
+    const successView = document.getElementById("successView");
+    const backAction = document.getElementById("backAction");
+    const whatsappAction = document.getElementById("whatsappAction");
+
+    employmentStatus.addEventListener("change", () => {
+      const isEmployee = employmentStatus.value === "موظف";
+
+      jobField.hidden = !isEmployee;
+      jobTitle.required = isEmployee;
+
+      if (!isEmployee) jobTitle.value = "";
+    });
 
     form.addEventListener("submit", async (event) => {
-      event.preventDefault(); // يمنع تحديث الصفحة ويبدأ إرسال الطلب
+      event.preventDefault();
 
       const name = document.getElementById("fullName").value.trim();
       const age = Number(document.getElementById("age").value);
       const phone = document.getElementById("phone").value.trim();
+      const loanAmount = document.getElementById("loanAmount").value;
+      const monthlySalary = document.getElementById("monthlySalary").value;
+      const bankApp = document.getElementById("bankApp").value;
+      const employment = employmentStatus.value;
+      const job = jobTitle.value.trim();
 
-      if (!name || !Number.isInteger(age) || age < 1 || age > 65 || !phone) {
-        showStatus("error", "تحقق من الاسم والعمر ورقم الهاتف.");
+      if (
+        !name ||
+        !Number.isInteger(age) ||
+        age < 1 ||
+        age > 65 ||
+        !phone ||
+        !loanAmount ||
+        !monthlySalary ||
+        !bankApp ||
+        !employment ||
+        (employment === "موظف" && !job)
+      ) {
+        showStatus("error", "يرجى تعبئة جميع البيانات والتحقق منها.");
         return;
       }
 
-      button.disabled = true;
-      button.textContent = "جارٍ إرسال الطلب…";
+      submitButton.disabled = true;
+      submitButton.textContent = "جارٍ إرسال الطلب…";
       statusBox.className = "status";
       statusBox.textContent = "";
 
-      const data = new URLSearchParams();
-      data.set("token", PUSHOVER_APP_TOKEN);
-      data.set("user", PUSHOVER_USER_KEY);
-      data.set("title", "طلب جديد");
-      data.set("message", `الاسم: ${name}\nالعمر: ${age}\nرقم واتساب: ${phone}`);
-      data.set("priority", "0");
+      const body = new URLSearchParams({
+        token: PUSHOVER_APP_TOKEN,
+        user: PUSHOVER_USER_KEY,
+        title: "طلب جديد",
+        message:
+          `الاسم: ${name}\n` +
+          `العمر: ${age}\n` +
+          `رقم واتساب: ${phone}\n` +
+          `مبلغ السلفة: ${loanAmount}\n` +
+          `الراتب الشهري: ${monthlySalary}\n` +
+          `تطبيق خدمات كي: ${bankApp}\n` +
+          `حالة العمل: ${employment}\n` +
+          (employment === "موظف" ? `الوظيفة: ${job}` : "")
+      });
 
       try {
-        const response = await fetch("https://api.pushover.net/1/messages.json", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-          },
-          body: data.toString()
-        });
+        const response = await fetch(
+          "https://api.pushover.net/1/messages.json",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: body.toString()
+          }
+        );
 
-        const responseText = await response.text();
-        let result;
-
-        try {
-          result = JSON.parse(responseText);
-        } catch {
-          throw new Error("استجابة غير مفهومة من Pushover.");
-        }
+        const result = await response.json();
 
         if (!response.ok || result.status !== 1) {
-          const details = Array.isArray(result.errors)
-            ? result.errors.join("، ")
-            : "تحقق من مفاتيح Pushover.";
-          throw new Error(details);
+          throw new Error(
+            Array.isArray(result.errors)
+              ? result.errors.join("، ")
+              : "تحقق من مفاتيح Pushover."
+          );
         }
 
-        form.reset();
-        showStatus("success", "تم إرسال الطلب بنجاح إلى Pushover.");
+        const digits = phone.replace(/[^\d]/g, "");
+        whatsappAction.href = digits
+          ? `https://wa.me/${digits}`
+          : "https://wa.me/";
+
+        formView.hidden = true;
+        successView.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } catch (error) {
         console.error("Pushover error:", error);
-        const message = error instanceof TypeError
-          ? "تعذر الاتصال بـ Pushover من المتصفح. إذا استمر ذلك، فالإرسال يحتاج API خادماً وسيطاً."
-          : `لم يتم الإرسال: ${error.message}`;
-        showStatus("error", message);
+
+        showStatus(
+          "error",
+          error instanceof TypeError
+            ? "تعذر الاتصال بـ Pushover من المتصفح."
+            : `لم يتم الإرسال: ${error.message}`
+        );
       } finally {
-        button.disabled = false;
-        button.textContent = "إرسال الطلب";
+        submitButton.disabled = false;
+        submitButton.textContent = "إرسال الطلب";
       }
+    });
+
+    backAction.addEventListener("click", () => {
+      form.reset();
+      jobField.hidden = true;
+      jobTitle.required = false;
+      statusBox.className = "status";
+      statusBox.textContent = "";
+      successView.hidden = true;
+      formView.hidden = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     function showStatus(type, message) {
