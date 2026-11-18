@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2d6744">
   <title>تقديم الطلب</title>
+
   <style>
     :root {
       --green: #2d6744;
       --green-dark: #205137;
-      --line: #dde8e0;
+      --line: #dfe9e1;
       --muted: #808c84;
     }
 
@@ -17,150 +19,110 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #f1f4f2;
-      color: #273e30;
+      padding: 18px 12px 40px;
+      background: #eef3ef;
+      color: #293d30;
       font-family: Tahoma, Arial, sans-serif;
+      text-align: right;
     }
 
-    .page {
+    .container {
       width: 100%;
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 30px 16px 55px;
-    }
-
-    .hero {
-      min-height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 26px 30px;
-      border-radius: 27px;
-      background: linear-gradient(135deg, #39794f, #1f5034);
-      color: #fff;
-      box-shadow: 0 16px 38px rgba(32, 81, 55, 0.12);
-    }
-
-    .hero h1 {
-      margin: 0 0 7px;
-      font-size: clamp(25px, 5vw, 36px);
-    }
-
-    .hero p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 15px;
-    }
-
-    .hero-icon {
-      width: 78px;
-      height: 78px;
-      display: grid;
-      flex: 0 0 78px;
-      place-items: center;
-      border-radius: 21px;
-      background: #fff;
-      color: var(--green);
-      font-size: 38px;
-      font-weight: bold;
     }
 
     .card {
-      margin-top: 24px;
-      padding: 42px clamp(20px, 6vw, 46px);
-      border: 1px solid #e7ede8;
-      border-radius: 28px;
+      padding: clamp(24px, 6vw, 48px);
+      border-radius: 30px;
       background: #fff;
-      box-shadow: 0 16px 45px rgba(38, 82, 53, 0.08);
+      box-shadow: 0 16px 48px rgba(34, 75, 48, .09);
     }
 
-    .card h2 {
-      margin: 0 0 34px;
+    h1 {
+      margin: 0 0 38px;
       color: var(--green);
       text-align: center;
-      font-size: clamp(27px, 6vw, 35px);
+      font-size: clamp(30px, 7vw, 46px);
     }
 
-    .field {
-      margin-bottom: 24px;
-    }
+    .field { margin-bottom: 28px; }
 
     label {
       display: block;
-      margin: 0 4px 10px;
+      margin: 0 4px 12px;
       color: var(--green);
+      font-size: clamp(18px, 4.5vw, 24px);
+      font-weight: 700;
       text-align: right;
-      font-size: 18px;
-      font-weight: bold;
     }
 
-    .required {
-      color: #b34a4a;
-    }
+    .required { color: #b34a4a; }
 
     input {
-      width: 100%;
-      height: 68px;
       display: block;
-      border: 2px solid var(--line);
-      border-radius: 18px;
+      width: 100%;
+      min-height: 72px;
+      padding: 16px 20px;
+      border: 3px solid var(--line);
+      border-radius: 24px;
       outline: none;
-      background: #fdfefd;
-      color: #273e30;
-      padding: 14px 18px;
+      background: #fcfdfc;
+      color: #293d30;
+      font: inherit;
+      font-size: 20px;
       text-align: right;
       direction: rtl;
-      font: inherit;
-      font-size: 17px;
-      transition: 0.18s;
     }
 
     input::placeholder {
-      color: #abb4ad;
+      color: #a7afa9;
+      text-align: right;
     }
 
     input:focus {
-      border-color: #77a488;
-      background: #fff;
-      box-shadow: 0 0 0 4px rgba(45, 103, 68, 0.08);
+      border-color: #80a78b;
+      box-shadow: 0 0 0 4px rgba(45, 103, 68, .08);
     }
 
     .hint {
-      margin: 8px 4px 0;
+      margin: 10px 5px 0;
       color: var(--muted);
-      text-align: right;
-      font-size: 13px;
+      font-size: 16px;
       line-height: 1.7;
+      text-align: right;
     }
 
-    .submit {
-      width: min(100%, 330px);
-      height: 70px;
+    button {
       display: block;
-      margin: 34px auto 0;
+      width: 100%;
+      min-height: 86px;
+      margin-top: 40px;
       border: 0;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #34784d, var(--green-dark));
-      color: #fff;
-      box-shadow: 0 12px 25px rgba(32, 81, 55, 0.18);
+      border-radius: 28px;
+      background: linear-gradient(135deg, #39794f, var(--green-dark));
+      color: white;
+      box-shadow: 0 14px 28px rgba(32, 81, 55, .17);
       cursor: pointer;
       font: inherit;
-      font-size: 21px;
-      font-weight: bold;
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 700;
     }
 
-    .submit:disabled {
+    button:disabled {
       cursor: wait;
-      opacity: 0.65;
+      opacity: .65;
     }
 
     .status {
       display: none;
-      margin-top: 18px;
-      padding: 13px;
-      border-radius: 14px;
-      text-align: center;
+      margin-top: 22px;
+      padding: 20px 16px;
+      border-radius: 22px;
+      font-size: 18px;
       line-height: 1.8;
+      text-align: center;
+      overflow-wrap: anywhere;
     }
 
     .status.success {
@@ -175,56 +137,19 @@
       color: #973535;
     }
 
-    @media (max-width: 520px) {
-      .page {
-        padding: 15px 10px 35px;
-      }
-
-      .hero {
-        min-height: 118px;
-        padding: 18px;
-        border-radius: 22px;
-      }
-
-      .hero-icon {
-        width: 58px;
-        height: 58px;
-        flex-basis: 58px;
-        border-radius: 17px;
-        font-size: 28px;
-      }
-
-      .card {
-        margin-top: 15px;
-        padding: 28px 17px;
-        border-radius: 22px;
-      }
-
-      input {
-        height: 62px;
-        font-size: 16px;
-      }
-
-      .submit {
-        height: 64px;
-        font-size: 20px;
-      }
+    @media (max-width: 480px) {
+      body { padding: 10px 8px 28px; }
+      .card { border-radius: 24px; }
+      input { min-height: 64px; border-radius: 21px; font-size: 18px; }
+      button { min-height: 72px; border-radius: 23px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
-    <header class="hero">
-      <div>
-        <h1>خدماتنا</h1>
-        <p>نموذج تقديم طلب واستقبال المعلومات</p>
-      </div>
-      <div class="hero-icon" aria-hidden="true">✓</div>
-    </header>
-
+  <main class="container">
     <section class="card">
-      <h2>تقديم الطلب</h2>
+      <h1>تقديم الطلب</h1>
 
       <form id="requestForm">
         <div class="field">
@@ -249,7 +174,7 @@
             min="1"
             max="65"
             inputmode="numeric"
-            placeholder="مثال: 35"
+            placeholder="مثال: 30"
             required
           >
           <p class="hint">الحد الأعلى للعمر 65 سنة.</p>
@@ -270,90 +195,87 @@
           <p class="hint">أدخل رقم الهاتف بصورة صحيحة.</p>
         </div>
 
-        <button id="submitButton" class="submit" type="submit">
-          إرسال الطلب
-        </button>
+        <button id="submitButton" type="submit">إرسال الطلب</button>
         <div id="status" class="status" role="status" aria-live="polite"></div>
       </form>
     </section>
   </main>
 
   <script>
+    // مفاتيح التجربة التي أرسلتها
     const PUSHOVER_APP_TOKEN = "a1i47tapxjska68ppeuv5sz7n7k549";
     const PUSHOVER_USER_KEY = "ui9s8fpr41hf3qvnydb2dx7u6cru8b";
 
     const form = document.getElementById("requestForm");
-    const submitButton = document.getElementById("submitButton");
+    const button = document.getElementById("submitButton");
     const statusBox = document.getElementById("status");
 
     form.addEventListener("submit", async (event) => {
-      event.preventEvent();
-      event.preventDefault();
+      event.preventDefault(); // يمنع تحديث الصفحة ويبدأ إرسال الطلب
 
       const name = document.getElementById("fullName").value.trim();
       const age = Number(document.getElementById("age").value);
       const phone = document.getElementById("phone").value.trim();
 
-      if (!name) {
-        showStatus("error", "يرجى إدخال الاسم الكامل.");
+      if (!name || !Number.isInteger(age) || age < 1 || age > 65 || !phone) {
+        showStatus("error", "تحقق من الاسم والعمر ورقم الهاتف.");
         return;
       }
 
-      if (!Number.isInteger(age) || age < 1 || age > 65) {
-        showStatus("error", "العمر يجب أن يكون بين 1 و65 سنة.");
-        return;
-      }
+      button.disabled = true;
+      button.textContent = "جارٍ إرسال الطلب…";
+      statusBox.className = "status";
+      statusBox.textContent = "";
 
-      if (!phone) {
-        showStatus("error", "يرجى إدخال رقم واتساب.");
-        return;
-      }
-
-      submitButton.disabled = true;
-      submitButton.textContent = "جارٍ الإرسال…";
-
-      const body = new URLSearchParams({
-        token: PUSHOVER_APP_TOKEN,
-        user: PUSHOVER_USER_KEY,
-        title: "طلب جديد",
-        message: `الاسم: ${name}\nالعمر: ${age}\nواتساب: ${phone}`,
-        priority: "0"
-      });
+      const data = new URLSearchParams();
+      data.set("token", PUSHOVER_APP_TOKEN);
+      data.set("user", PUSHOVER_USER_KEY);
+      data.set("title", "طلب جديد");
+      data.set("message", `الاسم: ${name}\nالعمر: ${age}\nرقم واتساب: ${phone}`);
+      data.set("priority", "0");
 
       try {
-        const response = await fetch(
-          "https://api.pushover.net/1/messages.json",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body
-          }
-        );
+        const response = await fetch("https://api.pushover.net/1/messages.json", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+          },
+          body: data.toString()
+        });
 
-        const result = await response.json();
+        const responseText = await response.text();
+        let result;
+
+        try {
+          result = JSON.parse(responseText);
+        } catch {
+          throw new Error("استجابة غير مفهومة من Pushover.");
+        }
 
         if (!response.ok || result.status !== 1) {
-          throw new Error(result.errors?.join("، ") || "فشل الإرسال");
+          const details = Array.isArray(result.errors)
+            ? result.errors.join("، ")
+            : "تحقق من مفاتيح Pushover.";
+          throw new Error(details);
         }
 
         form.reset();
-        showStatus("success", "تم إرسال طلبك بنجاح.");
+        showStatus("success", "تم إرسال الطلب بنجاح إلى Pushover.");
       } catch (error) {
-        showStatus(
-          "error",
-          "تعذر الإرسال. افتح الصفحة من HTTPS أو استخدم خادماً؛ قد يمنع المتصفح طلب Pushover مباشرة."
-        );
+        console.error("Pushover error:", error);
+        const message = error instanceof TypeError
+          ? "تعذر الاتصال بـ Pushover من المتصفح. إذا استمر ذلك، فالإرسال يحتاج API خادماً وسيطاً."
+          : `لم يتم الإرسال: ${error.message}`;
+        showStatus("error", message);
       } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "إرسال الطلب";
+        button.disabled = false;
+        button.textContent = "إرسال الطلب";
       }
     });
 
-    function showStatus(type, text) {
+    function showStatus(type, message) {
       statusBox.className = `status ${type}`;
-      statusBox.textContent = text;
+      statusBox.textContent = message;
     }
   </script>
 </body>
