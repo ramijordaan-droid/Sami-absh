@@ -3,25 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#20583a">
   <title>تقديم الطلب</title>
 
   <style>
     :root {
       --green: #2d6744;
       --green-dark: #205137;
+      --green-deep: #17472f;
+      --green-light: #edf6f0;
       --line: #dfe7e1;
       --muted: #87928b;
+      --white: #fff;
+      --shadow: 0 16px 44px rgba(38, 82, 53, .09);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
       direction: rtl;
-      background: #f1f5f2;
+      background:
+        radial-gradient(circle at top right, rgba(70, 139, 94, .12), transparent 380px),
+        linear-gradient(145deg, #f3f7f4 0%, #e7efe9 100%);
       color: #293d30;
       font-family: Tahoma, Arial, sans-serif;
+    }
+
+    button,
+    input,
+    select {
+      font-family: inherit;
     }
 
     .page {
@@ -38,10 +53,12 @@
       justify-content: center;
       gap: 18px;
       padding: 24px;
-      border: 1px solid rgba(45, 103, 68, .07);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .2);
       border-radius: 28px;
-      background: #fff;
-      box-shadow: 0 16px 44px rgba(38, 82, 53, .07);
+      background: linear-gradient(145deg, #397d54 0%, #20583a 58%, #17472f 100%);
+      box-shadow: 0 18px 48px rgba(25, 77, 50, .16);
+      color: var(--white);
     }
 
     .photo-slider {
@@ -49,8 +66,9 @@
       width: 100%;
       height: clamp(190px, 55vw, 360px);
       overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .22);
       border-radius: 22px;
-      background: #e8eee9;
+      background: #dfe9e2;
       direction: ltr;
     }
 
@@ -75,18 +93,23 @@
       width: 44px;
       height: 44px;
       transform: translateY(-50%);
-      border: 0;
+      border: 1px solid rgba(255, 255, 255, .7);
       border-radius: 50%;
-      background: rgba(255, 255, 255, .88);
-      color: #205137;
+      background: rgba(255, 255, 255, .9);
+      color: var(--green-dark);
       font-size: 30px;
       line-height: 38px;
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
     }
 
-    .slider-arrow.prev { right: 12px; }
-    .slider-arrow.next { left: 12px; }
+    .slider-arrow.prev {
+      right: 12px;
+    }
+
+    .slider-arrow.next {
+      left: 12px;
+    }
 
     .slider-dots {
       position: absolute;
@@ -107,22 +130,29 @@
       border-radius: 50%;
       background: rgba(255, 255, 255, .65);
       cursor: pointer;
+      transition: width .2s ease, border-radius .2s ease;
     }
 
     .slider-dot.active {
+      width: 24px;
+      border-radius: 999px;
       background: #fff;
-      transform: scale(1.2);
     }
 
     .hero-logo {
-      width: 280px;
-      height: 280px;
+      width: 180px;
+      height: 180px;
+      padding: 12px;
+      border: 3px solid rgba(255, 255, 255, .75);
+      border-radius: 50%;
+      background: #fff;
       object-fit: contain;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .16);
     }
 
     .hero h1 {
       margin: 0;
-      color: var(--green);
+      color: #fff;
       text-align: center;
       font-size: clamp(26px, 6vw, 38px);
     }
@@ -130,9 +160,11 @@
     .card,
     .bank-info {
       margin-top: 20px;
+      border: 1px solid rgba(255, 255, 255, .18);
       border-radius: 28px;
-      background: #fff;
-      box-shadow: 0 16px 48px rgba(34, 75, 48, .09);
+      background: linear-gradient(145deg, #397d54 0%, #20583a 72%, #194b32 100%);
+      box-shadow: 0 16px 48px rgba(34, 75, 48, .16);
+      color: #fff;
     }
 
     .card {
@@ -141,7 +173,7 @@
 
     .card h2 {
       margin: 0 0 34px;
-      color: var(--green);
+      color: #fff;
       text-align: center;
       font-size: clamp(28px, 7vw, 42px);
     }
@@ -154,13 +186,15 @@
     label {
       display: block;
       margin: 0 4px 10px;
-      color: var(--green);
+      color: #fff;
       text-align: right;
       font-size: clamp(17px, 4.4vw, 22px);
       font-weight: 700;
     }
 
-    .required { color: #bd5555; }
+    .required {
+      color: #ffd2ca;
+    }
 
     input,
     select {
@@ -169,24 +203,26 @@
       display: block;
       padding: 15px 18px;
       direction: rtl;
-      border: 2px solid var(--line);
+      border: 2px solid #cadfd1;
       border-radius: 20px;
       outline: none;
-      background: #fcfdfc;
+      background: #f9fcfa;
       color: #293d30;
       text-align: right;
       font: inherit;
       font-size: 18px;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
     }
 
     input::placeholder {
-      color: #abb5ae;
+      color: #9aa89e;
     }
 
     input:focus,
     select:focus {
-      border-color: #77a287;
-      box-shadow: 0 0 0 4px rgba(45, 103, 68, .08);
+      border-color: #91c7a2;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(225, 247, 232, .18);
     }
 
     select {
@@ -200,11 +236,13 @@
 
     .hint {
       margin: 8px 5px 0;
-      color: var(--muted);
+      color: #d7e8dc;
       font-size: 14px;
     }
 
-    [hidden] { display: none !important; }
+    [hidden] {
+      display: none !important;
+    }
 
     button {
       font-family: inherit;
@@ -219,12 +257,19 @@
       cursor: pointer;
       font-size: 20px;
       font-weight: 700;
+      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
     }
 
     .submit-button {
       margin-top: 34px;
-      background: linear-gradient(135deg, #39794f, #205137);
-      color: #fff;
+      background: linear-gradient(135deg, #fff, #edf7ef);
+      color: #20583a;
+      box-shadow: 0 10px 22px rgba(9, 39, 23, .16);
+    }
+
+    .submit-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(9, 39, 23, .22);
     }
 
     .submit-button:disabled {
@@ -254,18 +299,19 @@
 
     .bank-info {
       padding: clamp(24px, 6vw, 42px);
-      background: linear-gradient(135deg, #34784d, #205137);
-      color: #fff;
+      background: linear-gradient(145deg, #34784d, #174a30);
       text-align: center;
     }
 
     .bank-info h2 {
       margin: 0 0 14px;
+      color: #fff;
       font-size: clamp(24px, 6vw, 34px);
     }
 
     .bank-info p {
       margin: 0;
+      color: rgba(255, 255, 255, .82);
       line-height: 1.9;
     }
 
@@ -284,7 +330,7 @@
       height: 142px;
       display: grid;
       place-items: center;
-      border: 10px solid #edf7f0;
+      border: 10px solid rgba(255, 255, 255, .28);
       border-radius: 50%;
       background: #fff;
       color: var(--green);
@@ -297,26 +343,33 @@
 
     .success-view h2 {
       margin: 0;
-      color: var(--green);
+      color: #fff;
       font-size: clamp(28px, 7vw, 40px);
     }
 
     .success-view p {
       max-width: 470px;
       margin: 0;
-      color: var(--muted);
+      color: #d7e8dc;
       line-height: 1.9;
     }
 
     .back-button {
       max-width: 500px;
-      border: 3px solid var(--green);
+      border: 3px solid #fff;
       background: #fff;
-      color: var(--green);
+      color: #20583a;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #f1ce72;
+      outline-offset: 3px;
     }
 
     @media (max-width: 480px) {
-      .page { padding: 10px 8px 28px; }
+      .page {
+        padding: 10px 8px 28px;
+      }
 
       .hero {
         border-radius: 24px;
@@ -335,17 +388,30 @@
         line-height: 34px;
       }
 
-      .hero-logo { width: 220px; height: 220px; }
-      .card { border-radius: 24px; }
+      .hero-logo {
+        width: 150px;
+        height: 150px;
+      }
 
-      input, select {
+      .card {
+        border-radius: 24px;
+      }
+
+      input,
+      select {
         min-height: 64px;
-        border-radius: 21px;
+        border-radius: 18px;
         font-size: 17px;
       }
 
-      .submit-button, .back-button { min-height: 70px; }
-      .success-view { min-height: 480px; }
+      .submit-button,
+      .back-button {
+        min-height: 70px;
+      }
+
+      .success-view {
+        min-height: 480px;
+      }
     }
   </style>
 </head>
